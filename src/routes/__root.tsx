@@ -80,10 +80,10 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isAuth = pathname === "/login" || pathname === "/register";
+  const bare = pathname === "/" || pathname === "/login" || pathname === "/register";
   return (
     <QueryClientProvider client={queryClient}>
-      {isAuth ? <Outlet /> : <AppShell><Outlet /></AppShell>}
+      {bare ? <Outlet /> : <AppShell><Outlet /></AppShell>}
     </QueryClientProvider>
   );
 }

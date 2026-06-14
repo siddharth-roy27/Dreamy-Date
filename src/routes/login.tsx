@@ -35,7 +35,7 @@ function LoginPage() {
           <form className="mt-8 space-y-5">
             <VintageInput label="Email" type="email" placeholder="you@love.letters" />
             <VintageInput label="Password" type="password" placeholder="••••••••" />
-            <Link to="/" className="block">
+            <Link to="/home" className="block">
               <VintageButton variant="primary" className="w-full">Sign In</VintageButton>
             </Link>
             <button type="button" className="w-full rounded-lg border border-border bg-secondary/60 py-3 font-cinzel text-xs uppercase tracking-[0.25em] text-foreground hover:bg-secondary">

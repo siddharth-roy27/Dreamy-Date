@@ -28,7 +28,7 @@ function RegisterPage() {
           <VintageInput label="Email" type="email" placeholder="you@love.letters" />
           <VintageInput label="Password" type="password" placeholder="••••••••" />
           <VintageInput label="Confirm Password" type="password" placeholder="••••••••" />
-          <Link to="/"><VintageButton variant="gold" className="mt-2 w-full">Begin Our Story</VintageButton></Link>
+          <Link to="/home"><VintageButton variant="gold" className="mt-2 w-full">Begin Our Story</VintageButton></Link>
         </form>
         <p className="mt-6 text-center font-cinzel text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
           Already written? <Link to="/login" className="text-primary">Open the diary</Link>

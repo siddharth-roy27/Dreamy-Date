@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WaitingRouteImport } from './routes/waiting'
 import { Route as VideoDateRouteImport } from './routes/video-date'
 import { Route as SongRoomRouteImport } from './routes/song-room'
 import { Route as SettingsRouteImport } from './routes/settings'
@@ -17,10 +18,22 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PlanRouteImport } from './routes/plan'
 import { Route as MemoriesRouteImport } from './routes/memories'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as InviteRouteImport } from './routes/invite'
+import { Route as InboxRouteImport } from './routes/inbox'
 import { Route as HostRouteImport } from './routes/host'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as DateRoomRouteImport } from './routes/date-room'
+import { Route as ConnectedRouteImport } from './routes/connected'
 import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as BucketListRouteImport } from './routes/bucket-list'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MovieIdRouteImport } from './routes/movie.$id'
 
+const WaitingRoute = WaitingRouteImport.update({
+  id: '/waiting',
+  path: '/waiting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VideoDateRoute = VideoDateRouteImport.update({
   id: '/video-date',
   path: '/video-date',
@@ -61,9 +74,34 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InviteRoute = InviteRouteImport.update({
+  id: '/invite',
+  path: '/invite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboxRoute = InboxRouteImport.update({
+  id: '/inbox',
+  path: '/inbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HostRoute = HostRouteImport.update({
   id: '/host',
   path: '/host',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DateRoomRoute = DateRoomRouteImport.update({
+  id: '/date-room',
+  path: '/date-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectedRoute = ConnectedRouteImport.update({
+  id: '/connected',
+  path: '/connected',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
@@ -71,16 +109,32 @@ const CalendarRoute = CalendarRouteImport.update({
   path: '/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BucketListRoute = BucketListRouteImport.update({
+  id: '/bucket-list',
+  path: '/bucket-list',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MovieIdRoute = MovieIdRouteImport.update({
+  id: '/movie/$id',
+  path: '/movie/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bucket-list': typeof BucketListRoute
   '/calendar': typeof CalendarRoute
+  '/connected': typeof ConnectedRoute
+  '/date-room': typeof DateRoomRoute
+  '/home': typeof HomeRoute
   '/host': typeof HostRoute
+  '/inbox': typeof InboxRoute
+  '/invite': typeof InviteRoute
   '/login': typeof LoginRoute
   '/memories': typeof MemoriesRoute
   '/plan': typeof PlanRoute
@@ -89,11 +143,19 @@ export interface FileRoutesByFullPath {
   '/settings': typeof SettingsRoute
   '/song-room': typeof SongRoomRoute
   '/video-date': typeof VideoDateRoute
+  '/waiting': typeof WaitingRoute
+  '/movie/$id': typeof MovieIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bucket-list': typeof BucketListRoute
   '/calendar': typeof CalendarRoute
+  '/connected': typeof ConnectedRoute
+  '/date-room': typeof DateRoomRoute
+  '/home': typeof HomeRoute
   '/host': typeof HostRoute
+  '/inbox': typeof InboxRoute
+  '/invite': typeof InviteRoute
   '/login': typeof LoginRoute
   '/memories': typeof MemoriesRoute
   '/plan': typeof PlanRoute
@@ -102,12 +164,20 @@ export interface FileRoutesByTo {
   '/settings': typeof SettingsRoute
   '/song-room': typeof SongRoomRoute
   '/video-date': typeof VideoDateRoute
+  '/waiting': typeof WaitingRoute
+  '/movie/$id': typeof MovieIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bucket-list': typeof BucketListRoute
   '/calendar': typeof CalendarRoute
+  '/connected': typeof ConnectedRoute
+  '/date-room': typeof DateRoomRoute
+  '/home': typeof HomeRoute
   '/host': typeof HostRoute
+  '/inbox': typeof InboxRoute
+  '/invite': typeof InviteRoute
   '/login': typeof LoginRoute
   '/memories': typeof MemoriesRoute
   '/plan': typeof PlanRoute
@@ -116,13 +186,21 @@ export interface FileRoutesById {
   '/settings': typeof SettingsRoute
   '/song-room': typeof SongRoomRoute
   '/video-date': typeof VideoDateRoute
+  '/waiting': typeof WaitingRoute
+  '/movie/$id': typeof MovieIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bucket-list'
     | '/calendar'
+    | '/connected'
+    | '/date-room'
+    | '/home'
     | '/host'
+    | '/inbox'
+    | '/invite'
     | '/login'
     | '/memories'
     | '/plan'
@@ -131,11 +209,19 @@ export interface FileRouteTypes {
     | '/settings'
     | '/song-room'
     | '/video-date'
+    | '/waiting'
+    | '/movie/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bucket-list'
     | '/calendar'
+    | '/connected'
+    | '/date-room'
+    | '/home'
     | '/host'
+    | '/inbox'
+    | '/invite'
     | '/login'
     | '/memories'
     | '/plan'
@@ -144,11 +230,19 @@ export interface FileRouteTypes {
     | '/settings'
     | '/song-room'
     | '/video-date'
+    | '/waiting'
+    | '/movie/$id'
   id:
     | '__root__'
     | '/'
+    | '/bucket-list'
     | '/calendar'
+    | '/connected'
+    | '/date-room'
+    | '/home'
     | '/host'
+    | '/inbox'
+    | '/invite'
     | '/login'
     | '/memories'
     | '/plan'
@@ -157,12 +251,20 @@ export interface FileRouteTypes {
     | '/settings'
     | '/song-room'
     | '/video-date'
+    | '/waiting'
+    | '/movie/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BucketListRoute: typeof BucketListRoute
   CalendarRoute: typeof CalendarRoute
+  ConnectedRoute: typeof ConnectedRoute
+  DateRoomRoute: typeof DateRoomRoute
+  HomeRoute: typeof HomeRoute
   HostRoute: typeof HostRoute
+  InboxRoute: typeof InboxRoute
+  InviteRoute: typeof InviteRoute
   LoginRoute: typeof LoginRoute
   MemoriesRoute: typeof MemoriesRoute
   PlanRoute: typeof PlanRoute
@@ -171,10 +273,19 @@ export interface RootRouteChildren {
   SettingsRoute: typeof SettingsRoute
   SongRoomRoute: typeof SongRoomRoute
   VideoDateRoute: typeof VideoDateRoute
+  WaitingRoute: typeof WaitingRoute
+  MovieIdRoute: typeof MovieIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/waiting': {
+      id: '/waiting'
+      path: '/waiting'
+      fullPath: '/waiting'
+      preLoaderRoute: typeof WaitingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/video-date': {
       id: '/video-date'
       path: '/video-date'
@@ -231,11 +342,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/invite': {
+      id: '/invite'
+      path: '/invite'
+      fullPath: '/invite'
+      preLoaderRoute: typeof InviteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbox': {
+      id: '/inbox'
+      path: '/inbox'
+      fullPath: '/inbox'
+      preLoaderRoute: typeof InboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/host': {
       id: '/host'
       path: '/host'
       fullPath: '/host'
       preLoaderRoute: typeof HostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/date-room': {
+      id: '/date-room'
+      path: '/date-room'
+      fullPath: '/date-room'
+      preLoaderRoute: typeof DateRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connected': {
+      id: '/connected'
+      path: '/connected'
+      fullPath: '/connected'
+      preLoaderRoute: typeof ConnectedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -245,6 +391,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bucket-list': {
+      id: '/bucket-list'
+      path: '/bucket-list'
+      fullPath: '/bucket-list'
+      preLoaderRoute: typeof BucketListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -252,13 +405,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/movie/$id': {
+      id: '/movie/$id'
+      path: '/movie/$id'
+      fullPath: '/movie/$id'
+      preLoaderRoute: typeof MovieIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BucketListRoute: BucketListRoute,
   CalendarRoute: CalendarRoute,
+  ConnectedRoute: ConnectedRoute,
+  DateRoomRoute: DateRoomRoute,
+  HomeRoute: HomeRoute,
   HostRoute: HostRoute,
+  InboxRoute: InboxRoute,
+  InviteRoute: InviteRoute,
   LoginRoute: LoginRoute,
   MemoriesRoute: MemoriesRoute,
   PlanRoute: PlanRoute,
@@ -267,6 +433,8 @@ const rootRouteChildren: RootRouteChildren = {
   SettingsRoute: SettingsRoute,
   SongRoomRoute: SongRoomRoute,
   VideoDateRoute: VideoDateRoute,
+  WaitingRoute: WaitingRoute,
+  MovieIdRoute: MovieIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

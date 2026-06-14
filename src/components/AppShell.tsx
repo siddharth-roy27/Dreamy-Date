@@ -1,20 +1,24 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  Home, User, Calendar, Heart, Video, Music,
-  BookHeart, Settings, CalendarPlus, Sparkles,
+  Home, User, Calendar, Heart, Music,
+  BookHeart, Settings, CalendarPlus, Sparkles, Mail, Clapperboard, Bell, ListChecks,
 } from "lucide-react";
 import type { ReactNode } from "react";
+import { inboxItems } from "@/lib/mock";
 
 const nav = [
-  { to: "/", label: "Dashboard", icon: Home },
-  { to: "/profile", label: "Profile", icon: User },
-  { to: "/calendar", label: "Calendar", icon: Calendar },
+  { to: "/home", label: "Dashboard", icon: Home },
+  { to: "/date-room", label: "Date Room", icon: Clapperboard },
   { to: "/plan", label: "Plan Date", icon: CalendarPlus },
+  { to: "/calendar", label: "Calendar", icon: Calendar },
   { to: "/host", label: "Host Date", icon: Heart },
   { to: "/song-room", label: "Song Room", icon: Music },
-  { to: "/video-date", label: "Video Date", icon: Video },
   { to: "/memories", label: "Memories", icon: BookHeart },
+  { to: "/bucket-list", label: "Bucket List", icon: ListChecks },
+  { to: "/inbox", label: "Inbox", icon: Bell },
+  { to: "/invite", label: "Invite Partner", icon: Mail },
+  { to: "/profile", label: "Profile", icon: User },
   { to: "/settings", label: "Settings", icon: Settings },
 ] as const;
 
@@ -24,7 +28,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen">
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-card/60 px-5 py-8 backdrop-blur-sm lg:flex">
-        <Link to="/" className="mb-10 block">
+        <Link to="/home" className="mb-10 block">
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-accent" />
             <span className="font-display text-2xl text-primary">DreamyDate</span>
